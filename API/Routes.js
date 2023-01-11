@@ -1,8 +1,13 @@
 const express = require('express');
 const appRoute = express.Router();
 
-appRoute.route('/').get((req, res) => {
-    res.send("i am index");
-});
+// Import route models
+const InsertUser = require("./RouteModels/RegisterUser")
+
+// Routes for handle interactions
+
+appRoute.route('/newuser').post((req, res) => { InsertUser.InsertUserDetails(req, res) });
+
+
 
 module.exports = appRoute;

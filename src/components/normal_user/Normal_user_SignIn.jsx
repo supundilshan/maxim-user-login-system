@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const Normal_user_SignIn = () => {
@@ -17,6 +18,14 @@ const Normal_user_SignIn = () => {
         e.preventDefault();
         const User_Object = { fname, lname, birthday, age, gender, email, password1, password2, phone };
         console.log(User_Object);
+
+        axios.post('http://localhost:3001/newuser', User_Object)
+            .then(() => {
+                console.log("object send to back");
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     return (
