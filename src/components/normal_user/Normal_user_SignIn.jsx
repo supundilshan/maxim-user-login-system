@@ -13,11 +13,17 @@ const Normal_user_SignIn = () => {
     const [password2, setPassword2] = useState("");
     const [phone, setPhone] = useState();
 
+    const insertUserData = (e) => {
+        e.preventDefault();
+        const User_Object = { fname, lname, birthday, age, gender, email, password1, password2, phone };
+        console.log(User_Object);
+    }
+
     return (
         <div>
             <h1>SIgn IN</h1>
 
-            <form>
+            <form onSubmit={insertUserData}>
 
                 <div className="form-group">
                     <label htmlFor="fname"> First Name: </label>
