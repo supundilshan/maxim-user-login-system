@@ -1,6 +1,21 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 const WelcomeNote = () => {
+
+    const navigate = useNavigate();
+
+    const directToUserLogin = () => {
+    }
+
+    const directToUserSignin = () => {
+
+        // navigate(`/signin`, { state: AuthorObject });
+        navigate(`/signin`, { state: { title: "User Registration" } });
+
+    }
+
     return (
         <div className='welcome-container'>
 
@@ -11,21 +26,23 @@ const WelcomeNote = () => {
 
             <div className='btn-container'>
 
-                <div classname='login-btn'>
-                    <button className='btn'>
-                        LOGIN
-                    </button>
+                <div className='btn-wrapper'>
+                    <div className='login-btn'>
+                        <button className='button' onClick={directToUserLogin}>
+                            LOGIN
+                        </button>
+                    </div>
+
+                    <div className='signin-btn'>
+                        <button className='button' onClick={directToUserSignin}>
+                            SIGNIN
+                        </button>
+                    </div>
                 </div>
 
-                <div className='signin-btn'>
-                    <button>
-                        REGISTER
-                    </button>
-                </div>
+
 
             </div>
-            <div class="trapezoid trapezoid1 "></div>
-            <div class="trapezoid trapezoid2 "></div>
 
             <div className='foot-note'>
                 <h4>If you have a Maxim account, please sign in</h4>

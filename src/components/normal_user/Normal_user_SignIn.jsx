@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 const Normal_user_SignIn = () => {
+
+    const location = useLocation();
 
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
@@ -30,7 +34,7 @@ const Normal_user_SignIn = () => {
 
     return (
         <div>
-            <h1>SIgn IN</h1>
+            <h1> {location.state.title}</h1>
 
             <form onSubmit={insertUserData}>
 

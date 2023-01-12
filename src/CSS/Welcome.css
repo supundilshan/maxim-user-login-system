@@ -11,52 +11,89 @@
     text-align: center;
     font-family: "Lucida Console", "Courier New", monospace;
     position: relative;
-    animation-name: dropdown;
+    animation-name: welcome-note-dropdown;
     animation-duration: 4s;
-    animation-delay: 0.5s;
+    animation-delay: 0s;
 }
 
-@keyframes dropdown {
+@keyframes welcome-note-dropdown {
     0% {
         top: 0px;
     }
 
-    25% {
+    50% {
         top: 100px;
     }
 }
 
 .btn-container {
-    display: flex;
     margin-left: auto;
     margin-right: auto;
     margin-top: 250px;
-    /* position: fixed; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.trapezoid {
-    margin: 50px;
+.btn-wrapper {
+    display: flex;
+    flex-direction: row;
+}
 
-    height: 0px;
+.button {
+    width: 100px;
+    height: 100px;
+    background: none;
+    border: none;
+}
+
+.login-btn,
+.signin-btn {
     width: 250px;
+    height: 150px;
+    position: absolute;
+    top: 60%;
+    text-align: center;
+
+    animation-duration: 4s;
+    animation-delay: 0s;
 }
 
-.trapezoid1 {
-    border-bottom: 100px solid #555;
-    border-left: 100px solid transparent;
-    border-right: 0px solid transparent;
+.login-btn {
+    margin-left: auto;
+    position: relative;
+    background-color: brown;
 
-    border-top-right-radius: 25px;
+    animation-name: login-btn-swipe;
 }
 
-.trapezoid2 {
-    border-top: 100px solid #555;
-    border-left: 0px solid transparent;
-    border-right: 100px solid transparent;
+.signin-btn {
+    margin-left: 0;
+    position: relative;
+    background-color: yellow;
 
-    border-top-left-radius: 25px;
+    animation-name: signin-btn-swipe;
 }
 
+@keyframes login-btn-swipe {
+    0% {
+        left: -200px;
+    }
+
+    50% {
+        left: 0px;
+    }
+}
+
+@keyframes signin-btn-swipe {
+    0% {
+        left: 200px;
+    }
+
+    50% {
+        left: 0px;
+    }
+}
 
 .foot-note {
     text-align: center;

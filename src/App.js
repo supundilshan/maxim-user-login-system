@@ -1,6 +1,8 @@
 import './App.css';
 import './CSS/Welcome.css';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import DisplayUserData from './components/normal_user/DisplayUserData';
 import Normal_user_LogIn from './components/normal_user/Normal_user_LogIn';
 import Normal_user_SignIn from './components/normal_user/Normal_user_SignIn';
@@ -10,13 +12,19 @@ function App() {
   return (
     <div className="App">
 
-      <WelcomeNote />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<WelcomeNote />} />
+
+          <Route path='/signin' element={<Normal_user_SignIn />} />
+          <Route path='/login' element={<Normal_user_LogIn />} />
+
+          <Route path='/viewuser' element={<DisplayUserData />} />
 
 
 
-      {/* <Normal_user_SignIn />
-      <Normal_user_LogIn />
-      <DisplayUserData /> */}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
