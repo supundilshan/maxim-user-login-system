@@ -1,10 +1,8 @@
 const Database = require("../Database/ConnectDb");
 
-const InsertUserDetails = (req, res) => {
-    console.log("in insert method");
-    // Insert Values
-    const sql = `INSERT INTO table1(id, first_name)
-        VALUES(1,"kamal");`;
+const ReadByID = (req, res) => {
+    const sql = `SELECT * FROM genaral_user_information
+                    WHERE id = ${req.params.id}`;
 
     // Exicute Quary
     Database.DB.query(sql, (err) => {
@@ -18,5 +16,7 @@ const InsertUserDetails = (req, res) => {
 }
 
 module.exports = {
-    InsertUserDetails
+    ReadByID
 };
+
+

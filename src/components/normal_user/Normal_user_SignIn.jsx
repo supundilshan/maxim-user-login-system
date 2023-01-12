@@ -16,10 +16,10 @@ const Normal_user_SignIn = () => {
 
     const insertUserData = (e) => {
         e.preventDefault();
-        const User_Object = { fname, lname, birthday, age, gender, email, password1, password2, phone };
+        const User_Object = { fname, lname, birthday, age, gender, email, password1, phone };
         console.log(User_Object);
 
-        axios.post('http://localhost:3001/newuser', User_Object)
+        axios.post('http://localhost:3001/user', User_Object)
             .then(() => {
                 console.log("object send to back");
             })
