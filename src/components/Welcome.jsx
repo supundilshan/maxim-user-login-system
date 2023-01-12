@@ -10,9 +10,9 @@ const WelcomeNote = () => {
     }
 
     const directToUserSignin = () => {
-
+        const usrObject = { title: "Register", fname: "", lname: "", birthday: "", age: 0, gender: "male", email: "", password1: "", phone: "" }
         // navigate(`/signin`, { state: AuthorObject });
-        navigate(`/signin`, { state: { title: "User Registration" } });
+        navigate(`/signin`, { state: usrObject });
 
     }
 

@@ -1,11 +1,3 @@
-/* .welcome-container {
-    background-color: beige;
-} */
-
-/* .welcome-note-container {
-    height: 50wh;
-} */
-
 .welcome-note {
     top: 100px;
     text-align: center;
@@ -62,7 +54,12 @@
 .login-btn {
     margin-left: auto;
     position: relative;
-    background-color: brown;
+    /* background-color: brown; */
+
+    background-image: url('../Images/pinpng.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 
     animation-name: login-btn-swipe;
 }
@@ -70,7 +67,8 @@
 .signin-btn {
     margin-left: 0;
     position: relative;
-    background-color: yellow;
+    background-image: url('../Images/Signinbk.png');
+    /* transform: scaleX(-1); */
 
     animation-name: signin-btn-swipe;
 }
@@ -98,6 +96,7 @@
 .foot-note {
     text-align: center;
     margin-top: 200px;
+    margin-bottom: 0px;
 
     font-family: "Lucida Console", "Courier New", monospace;
 }
