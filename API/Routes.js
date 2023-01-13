@@ -10,7 +10,8 @@ const ViewUser = require("./RouteModels/ViewUser")
 
 appRoute.route('/user').post((req, res) => { InsertUser.InsertUserDetails(req, res) });
 
-appRoute.route('/user').get((req, res) => { InsertUser.InsertUserDetails(req, res) });
+appRoute.route('/alluser').get((req, res) => { ViewUser.ReadLoginTable(req, res) });
+
 
 
 module.exports = appRoute;

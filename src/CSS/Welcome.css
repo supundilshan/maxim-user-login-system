@@ -41,8 +41,12 @@
 
 .login-btn,
 .signin-btn {
+
+    border: 2px solid rgb(0, 18, 118, 0.3);
+    font-size: 25px;
+
     width: 250px;
-    height: 150px;
+    height: 100px;
     position: absolute;
     top: 60%;
     text-align: center;
@@ -52,23 +56,16 @@
 }
 
 .login-btn {
-    margin-left: auto;
+    border-radius: 50px 5px 5px 5px;
     position: relative;
-    /* background-color: brown; */
-
-    background-image: url('../Images/pinpng.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-
+    background-color: rgb(230, 243, 252);
     animation-name: login-btn-swipe;
 }
 
 .signin-btn {
-    margin-left: 0;
+    border-radius: 5px 5px 50px 5px;
     position: relative;
-    background-image: url('../Images/Signinbk.png');
-    /* transform: scaleX(-1); */
+    background-color: rgb(200, 227, 248);
 
     animation-name: signin-btn-swipe;
 }

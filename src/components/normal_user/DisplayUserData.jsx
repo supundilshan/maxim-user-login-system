@@ -9,7 +9,7 @@ const DisplayUserData = () => {
         // Get the details of that particuler book
         axios.get(`http://localhost:3001/user/${1}`)
             .then((res) => {
-                getDbdata(res.data);
+                getUserdata(res.data);
             })
             .catch((err) => {
                 console.log(err);
