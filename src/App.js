@@ -2,6 +2,8 @@ import './App.css';
 import './CSS/Welcome.css';
 import './CSS/Normal_user_SignIn.css';
 import './CSS/Normal_user_LogIn.css';
+import './CSS/DisplayAllUsers.css'
+
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

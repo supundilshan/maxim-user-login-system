@@ -53,6 +53,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group col-sm">
               <label htmlFor="fname"> First Name: </label>
               <input
+                required
                 type="text"
                 className="form-control"
                 id="fname"
@@ -67,6 +68,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group col-sm">
               <label htmlFor="lname"> Last Name: </label>
               <input
+                required
                 type="text"
                 className="form-control"
                 id="lname"
@@ -83,6 +85,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group col">
               <label htmlFor="birthday">Birthday: </label>
               <input
+                required
                 type="date"
                 className="form-control"
                 id="birthday"
@@ -96,6 +99,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group col">
               <label htmlFor="age"> Age: </label>
               <input
+                required
                 type="number"
                 className="form-control"
                 id="age"
@@ -110,6 +114,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group col-sm">
               <label htmlFor="gender">Gender: </label>
               <select
+                required
                 className="form-control"
                 id="gender"
                 value={gender}
@@ -127,6 +132,7 @@ const Normal_user_SignIn = () => {
           <div className="form-group">
             <label htmlFor="email">Email address: </label>
             <input
+              required
               type="email"
               className="form-control"
               id="email"
@@ -141,6 +147,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group col-sm">
               <label htmlFor="password1">Password: </label>
               <input
+                required
                 type="password"
                 className="form-control"
                 id="password1"
@@ -155,6 +162,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group col-sm">
               <label htmlFor="password2">Confirm Password: </label>
               <input
+                required
                 type="password"
                 className="form-control"
                 id="password2"
@@ -169,6 +177,7 @@ const Normal_user_SignIn = () => {
             <div className="form-group">
               <label htmlFor="phone">Phone: </label>
               <input
+                required
                 type="number"
                 className="form-control"
                 id="phone"
@@ -184,6 +193,7 @@ const Normal_user_SignIn = () => {
           <div className="form-group">
             <label htmlFor="phone">Phone: </label>
             <input
+              required
               type="number"
               className="form-control"
               id="phone"

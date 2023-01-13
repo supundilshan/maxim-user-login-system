@@ -36,42 +36,49 @@ const DisplayAllsers = () => {
 
   return (
     <div>
-      <div className="input-group rounded">
-        <input
-          type="search"
-          className="form-control rounded"
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="search-addon"
-          onChange={(event) => handleSearch(event.target.value)}
-        />
-      </div>
+      <div className="table-container">
+        <h1>Registered Users</h1>
 
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Email</th>
-          <th>User Type</th>
-          <th>View</th>
-          <th>Delete</th>
-        </tr>
+        <div className="input-group rounded">
+          <input
+            type="search"
+            className="form-control rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+            onChange={(event) => handleSearch(event.target.value)}
+          />
+        </div>
 
-        {dbdata.map((dbdata, key) => {
-          return (
-            <tr className="data-table">
-              <td>{dbdata.id}</td>
-              <td>{dbdata.email}</td>
-              <td>{dbdata.user_type}</td>
-              <td>
-                <button>User Data</button>
-              </td>
-              <td>
-                <button>Delete</button>
-              </td>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Email</th>
+              <th>User Type</th>
+              <th>View</th>
+              <th>Delete</th>
             </tr>
-          );
-        })}
-      </table>
+          </thead>
+          <tbody>
+            {dbdata.map((dbdata, key) => {
+              return (
+                <tr className="data-table">
+                  <td>{dbdata.id}</td>
+                  <td>{dbdata.email}</td>
+                  <td>{dbdata.user_type}</td>
+                  <td>
+                    <button className="btn btn-primary">User Details</button>
+                  </td>
+                  <td>
+                    <button className="btn btn-danger">Delete</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
