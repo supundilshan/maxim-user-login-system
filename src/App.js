@@ -1,17 +1,20 @@
 import './App.css';
 import './CSS/Welcome.css';
-import './CSS/Normal_user_SignIn.css';
-import './CSS/Normal_user_LogIn.css';
+import './CSS/Signin.css';
+import './CSS/Login.css';
 import './CSS/DisplayAllUsers.css'
 
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import DisplayUserData from './components/normal_user/DisplayUserData';
-import Normal_user_LogIn from './components/normal_user/Normal_user_LogIn';
-import Normal_user_SignIn from './components/normal_user/Normal_user_SignIn';
+
+import Login from './components/Login';
 import WelcomeNote from './components/Welcome';
+
+import Normal_user_SignIn from './components/genaral_user/Register';
+
 import DisplayAllsers from './components/admin_user/DisplayAllsers';
+import DisplayUserData from './components/admin_user/DisplayUserData';
 
 function App() {
   return (
@@ -22,14 +25,12 @@ function App() {
           <Route path='/' element={<WelcomeNote />} />
 
           <Route path='/signin' element={<Normal_user_SignIn />} />
-          <Route path='/login' element={<Normal_user_LogIn />} />
+          <Route path='/login' element={<Login />} />
 
-          <Route path='/viewoneuser' element={<DisplayUserData />} />
+          <Route path='/login' element={<Login />} />
 
           <Route path='/viewalluser' element={<DisplayAllsers />} />
-
-
-
+          <Route path='/viewoneuser' element={<DisplayUserData />} />
 
 
         </Routes>

@@ -49,6 +49,20 @@ const DisplayAllsers = () => {
     navigate("/viewoneuser", { state: User });
   };
 
+  const DeleteUser = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://localhost:3001/user/${id}`)
+      .then(() => {
+        console.log("Deleting element sent to Server");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // reload the current page after delete an element
+    window.location.reload(false);
+  };
+
   return (
     <div>
       <div className="table-container">
@@ -101,7 +115,14 @@ const DisplayAllsers = () => {
                     </button>
                   </td>
                   <td>
-                    <button className="btn btn-danger">Delete</button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        DeleteUser(dbdata.id);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
