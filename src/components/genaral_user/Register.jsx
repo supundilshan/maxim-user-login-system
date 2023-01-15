@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
-const Normal_user_SignIn = () => {
+const Signin = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -17,8 +17,8 @@ const Normal_user_SignIn = () => {
   const [password2, setPassword2] = useState(location.state.password1);
   const [phone, setPhone] = useState(location.state.phone);
 
-  const insertUserData = (e) => {
-    e.preventDefault();
+  const insertUserData = () => {
+    // User_Object used to send form data to API
     const User_Object = {
       fname,
       lname,
@@ -29,7 +29,6 @@ const Normal_user_SignIn = () => {
       password1,
       phone,
     };
-    console.log(User_Object);
 
     axios
       .post("http://localhost:3001/user", User_Object)
@@ -40,7 +39,43 @@ const Normal_user_SignIn = () => {
         console.log(err);
       });
 
+    // After user registration user navigate to login page
     navigate(`/login`);
+  };
+
+  // the function validate passwords and phone number
+
+  const passwordValidate = (e) => {
+    e.preventDefault();
+
+    const uppercaseRegExp = /(?=.*?[A-Z])/;
+    const lowercaseRegExp = /(?=.*?[a-z])/;
+    const digitsRegExp = /(?=.*?[0-9])/;
+
+    const passLength = password1.length == 8;
+    const uppercasePassword = uppercaseRegExp.test(password1);
+    const lowercasePassword = lowercaseRegExp.test(password1);
+    const digitsPassword = digitsRegExp.test(password1);
+
+    if (
+      !passLength ||
+      !uppercasePassword ||
+      !lowercasePassword ||
+      !digitsPassword
+    ) {
+      document.getElementById("password1").style.border = "2px solid red";
+      alert("Please enter valid password");
+    } else if (password2 != password1) {
+      document.getElementById("password1").style.border = "none";
+      document.getElementById("password2").style.border = "2px solid red";
+      alert("Please Confirm Correct Password");
+    } else if (phone.toString().length > 10 || phone.toString().length < 10) {
+      document.getElementById("password2").style.border = "none";
+      document.getElementById("phone").style.border = "2px solid red";
+      alert("Please Enter Valid Phone Number");
+    } else {
+      insertUserData();
+    }
   };
 
   return (
@@ -48,10 +83,10 @@ const Normal_user_SignIn = () => {
       <div className="signin-container ">
         <h1 className="signin-title"> {location.state.title}</h1>
 
-        <form onSubmit={insertUserData}>
+        <form onSubmit={passwordValidate}>
           <div className="row">
             <div className="form-group col-sm">
-              <label htmlFor="fname"> First Name: </label>
+              <label htmlFor="fname"> First Name:* </label>
               <input
                 required
                 type="text"
@@ -66,7 +101,7 @@ const Normal_user_SignIn = () => {
             </div>
 
             <div className="form-group col-sm">
-              <label htmlFor="lname"> Last Name: </label>
+              <label htmlFor="lname"> Last Name:* </label>
               <input
                 required
                 type="text"
@@ -83,7 +118,7 @@ const Normal_user_SignIn = () => {
 
           <div className="row">
             <div className="form-group col">
-              <label htmlFor="birthday">Birthday: </label>
+              <label htmlFor="birthday">Birthday:* </label>
               <input
                 required
                 type="date"
@@ -97,7 +132,7 @@ const Normal_user_SignIn = () => {
             </div>
 
             <div className="form-group col">
-              <label htmlFor="age"> Age: </label>
+              <label htmlFor="age"> Age:* </label>
               <input
                 required
                 type="number"
@@ -112,7 +147,7 @@ const Normal_user_SignIn = () => {
             </div>
 
             <div className="form-group col-sm">
-              <label htmlFor="gender">Gender: </label>
+              <label htmlFor="gender">Gender:* </label>
               <select
                 required
                 className="form-control"
@@ -130,7 +165,7 @@ const Normal_user_SignIn = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email address: </label>
+            <label htmlFor="email">Email address:* </label>
             <input
               required
               type="email"
@@ -145,9 +180,10 @@ const Normal_user_SignIn = () => {
           </div>
           <div className="row">
             <div className="form-group col-sm">
-              <label htmlFor="password1">Password: </label>
+              <label htmlFor="password1">Password:* </label>
               <input
                 required
+                maxLength={8}
                 type="password"
                 className="form-control"
                 id="password1"
@@ -160,9 +196,10 @@ const Normal_user_SignIn = () => {
             </div>
 
             <div className="form-group col-sm">
-              <label htmlFor="password2">Confirm Password: </label>
+              <label htmlFor="password2">Confirm Password:* </label>
               <input
                 required
+                maxLength={8}
                 type="password"
                 className="form-control"
                 id="password2"
@@ -173,11 +210,15 @@ const Normal_user_SignIn = () => {
                 }}
               />
             </div>
+            <p>Please enter a password of 8 characters</p>
+            <p>
+              Password must contain at least one uppercase letter, lowercase
+              letter and a number
+            </p>
 
             <div className="form-group">
               <label htmlFor="phone">Phone: </label>
               <input
-                required
                 type="number"
                 className="form-control"
                 id="phone"
@@ -190,9 +231,12 @@ const Normal_user_SignIn = () => {
             </div>
           </div>
 
+          <p>* required fields</p>
+
           <button
             type="submit"
             className="btn btn-primary"
+            id="submit"
             style={{ marginTop: "15px" }}
           >
             {location.state.title}
@@ -203,4 +247,4 @@ const Normal_user_SignIn = () => {
   );
 };
 
-export default Normal_user_SignIn;
+export default Signin;

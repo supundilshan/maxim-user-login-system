@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import { useNavigate, useLocation } from "react-router-dom";
-import { tab } from "@testing-library/user-event/dist/tab";
 
 const DisplayUserData = () => {
   const [dbdata, getDBdata] = useState([]);
@@ -62,11 +61,6 @@ const DisplayUserData = () => {
               </tr>
               <tr>
                 <td>Phone:</td> <td>{dbdata.phone_number}</td>
-              </tr>
-              <tr>
-                <td colSpan={2}>
-                  <button className="btn btn-danger">Delete</button>
-                </td>
               </tr>
             </tbody>
           );

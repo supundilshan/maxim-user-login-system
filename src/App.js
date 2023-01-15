@@ -11,10 +11,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import WelcomeNote from './components/Welcome';
 
-import Normal_user_SignIn from './components/genaral_user/Register';
+import Signin from './components/genaral_user/Register';
 
 import DisplayAllsers from './components/admin_user/DisplayAllsers';
 import DisplayUserData from './components/admin_user/DisplayUserData';
+import View from './components/genaral_user/View';
 
 function App() {
   return (
@@ -24,10 +25,10 @@ function App() {
         <Routes>
           <Route path='/' element={<WelcomeNote />} />
 
-          <Route path='/signin' element={<Normal_user_SignIn />} />
+          <Route path='/signin' element={<Signin />} />
           <Route path='/login' element={<Login />} />
 
-          <Route path='/login' element={<Login />} />
+          <Route path='/view' element={<View />} />
 
           <Route path='/viewalluser' element={<DisplayAllsers />} />
           <Route path='/viewoneuser' element={<DisplayUserData />} />
