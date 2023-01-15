@@ -190,21 +190,6 @@ const Normal_user_SignIn = () => {
             </div>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="phone">Phone: </label>
-            <input
-              required
-              type="number"
-              className="form-control"
-              id="phone"
-              placeholder="Eter a phone number"
-              value={phone}
-              onChange={(event) => {
-                setPhone(event.target.value);
-              }}
-            />
-          </div>
-
           <button
             type="submit"
             className="btn btn-primary"

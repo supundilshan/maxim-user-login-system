@@ -50,7 +50,7 @@ const WelcomeNote = () => {
 
       <div className="foot-note">
         <h4>If you have a Maxim account, please sign in</h4>
-        <h4>If you do not have a Maxim account please register with us</h4>
+        <h4>If you do not have a Maxim account please signin with us</h4>
       </div>
     </div>
   );

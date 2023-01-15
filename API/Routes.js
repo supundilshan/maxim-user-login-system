@@ -10,7 +10,10 @@ const ViewUser = require("./RouteModels/ViewUser")
 
 appRoute.route('/user').post((req, res) => { InsertUser.InsertUserDetails(req, res) });
 
-appRoute.route('/alluser').get((req, res) => { ViewUser.ReadLoginTable(req, res) });
+appRoute.route('/user/:id').get((req, res) => { ViewUser.ReadUserTableByEmail(req, res) });
+
+
+appRoute.route('/alluser').get((req, res) => { ViewUser.ReadUserTable(req, res) });
 
 
 

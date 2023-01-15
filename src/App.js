@@ -24,7 +24,7 @@ function App() {
           <Route path='/signin' element={<Normal_user_SignIn />} />
           <Route path='/login' element={<Normal_user_LogIn />} />
 
-          <Route path='/viewuser' element={<DisplayUserData />} />
+          <Route path='/viewoneuser' element={<DisplayUserData />} />
 
           <Route path='/viewalluser' element={<DisplayAllsers />} />
 

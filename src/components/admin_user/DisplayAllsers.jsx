@@ -7,7 +7,7 @@ const DisplayAllsers = () => {
   const navigate = useNavigate();
 
   const [dbdata, getDbdata] = useState([]);
-  const [duplicateData, setDuplicateData] = useState([]);
+  const [duplicateData, setDuplicateData] = useState([]); //Duplicate variable is for store data in "dbdata"
 
   // Get Data fromDatabase
   useEffect(() => {
@@ -23,15 +23,30 @@ const DisplayAllsers = () => {
   }, []);
 
   const handleSearch = (SearchKey) => {
-    if (SearchKey == "") {
-      getDbdata(duplicateData);
-    } else {
-      const filteredCars = dbdata.filter((data) =>
-        data.email.includes(SearchKey)
-      );
+    console.log(SearchKey);
 
-      getDbdata(filteredCars);
+    // Filter data whle user types on search bar
+    if (SearchKey == "") {
+      // If user input is cleared return whole data
+      getDbdata(duplicateData);
+      console.log("didnt filtered");
+    } else {
+      // Filter database data using filter function and user input
+      const filteredData = dbdata.filter((data) =>
+        data.email_address.includes(SearchKey)
+      );
+      getDbdata(filteredData);
+
+      console.log("filtered");
     }
+  };
+
+  const DisplayOneUer = (Email, Name) => {
+    const User = {
+      email: Email,
+      name: Name,
+    };
+    navigate("/viewoneuser", { state: User });
   };
 
   return (
@@ -43,7 +58,7 @@ const DisplayAllsers = () => {
           <input
             type="search"
             className="form-control rounded"
-            placeholder="Search"
+            placeholder="Search email"
             aria-label="Search"
             aria-describedby="search-addon"
             onChange={(event) => handleSearch(event.target.value)}
@@ -53,22 +68,37 @@ const DisplayAllsers = () => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
               <th>Email</th>
-              <th>User Type</th>
-              <th>View</th>
-              <th>Delete</th>
+              <th>Contact</th>
+              <th colSpan={2}> View/Delete User</th>
             </tr>
           </thead>
           <tbody>
             {dbdata.map((dbdata, key) => {
               return (
                 <tr className="data-table">
-                  <td>{dbdata.id}</td>
-                  <td>{dbdata.email}</td>
-                  <td>{dbdata.user_type}</td>
                   <td>
-                    <button className="btn btn-primary">User Details</button>
+                    {dbdata.first_name} {dbdata.last_name}
+                  </td>
+                  <td>{dbdata.age}</td>
+                  <td>{dbdata.gender}</td>
+                  <td>{dbdata.email_address}</td>
+                  <td>{dbdata.phone_number}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() =>
+                        DisplayOneUer(
+                          dbdata.email_address,
+                          dbdata.first_name + " " + dbdata.last_name
+                        )
+                      }
+                    >
+                      User Details
+                    </button>
                   </td>
                   <td>
                     <button className="btn btn-danger">Delete</button>

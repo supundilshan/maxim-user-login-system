@@ -15,9 +15,9 @@ const ReadUserTable = (req, res) => {
 }
 
 
-const ReadUserTableByID = (req, res) => {
+const ReadUserTableByEmail = (req, res) => {
     const sql = `SELECT * FROM genaral_user_information
-                    WHERE id = ${req.params.id}`;
+                    WHERE email_address = "${req.params.id}"`;
 
     // Exicute Quary
     Database.DB.query(sql, (err, result) => {
@@ -61,7 +61,7 @@ const ReadLoginTableByID = (req, res) => {
 
 module.exports = {
     ReadUserTable,
-    ReadUserTableByID,
+    ReadUserTableByEmail,
 
     ReadLoginTable,
     ReadLoginTableByID
