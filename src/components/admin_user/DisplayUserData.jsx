@@ -24,9 +24,9 @@ const DisplayUserData = () => {
   }, []);
 
   return (
-    <div>
+    <div className="table-container">
       <h1>{userName}</h1>
-      <table>
+      <table className="data-table">
         <thead>
           <tr>
             <th colSpan={2}>details</th>
