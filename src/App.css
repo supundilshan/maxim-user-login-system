@@ -2,10 +2,36 @@
   background-image: url('../src/Images/bk.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: contain;
 
   width: 100%;
   height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+.table-container {
+  padding-top: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+table {
+  margin-top: 1%;
+  background-color: rgb(150, 202, 242, 0.5);
+
+  border-collapse: collapse;
+  width: 100%;
+
+  border: 2px solid rgb(0, 18, 118, 0.5);
+}
+
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: rgb(243, 248, 252);
 }

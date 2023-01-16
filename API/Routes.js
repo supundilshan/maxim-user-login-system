@@ -18,7 +18,7 @@ appRoute.route('/alluser').get((req, res) => { ViewUser.ReadUserTable(req, res) 
 
 appRoute.route('/authuser').post((req, res) => { ViewUser.ReadLoginTableByEmail(req, res) }); // Return authenticate details
 
-appRoute.route('/user/:id').delete((req, res) => { DeletUser.DeleteFromUserTable(req, res) });
+appRoute.route('/user/:id').delete((req, res) => { DeletUser.DeleteUser(req, res) });
 
 appRoute.route('/user/:id').put((req, res) => { UpdateUser.Update(req, res) });
 

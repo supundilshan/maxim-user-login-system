@@ -53,7 +53,7 @@ const View = () => {
   };
 
   return (
-    <div>
+    <div className="table-container">
       <h1>Edit Your Data</h1>
 
       <form onSubmit={updateUserData}>
@@ -191,7 +191,7 @@ const View = () => {
 
         <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-warning"
           style={{ marginTop: "15px" }}
         >
           EDIT
