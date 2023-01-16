@@ -23,9 +23,9 @@ const Insert_to_genaralUser = (req, res) => {
 }
 
 const Insert_to_system_login = (req, res) => {
-    const sql = `INSERT INTO system_login(email,password)
-    VALUES("${req.body.email}",
-            "${req.body.password1}");`;
+    const sql = `INSERT INTO system_login (id,email,password)
+                select id, email_address, password from  genaral_user_information 
+                WHERE email_address="${req.body.email}" ;`;
 
     // Exicute Quary
     Database.DB.query(sql, (err) => {

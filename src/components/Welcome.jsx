@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -23,6 +23,18 @@ const WelcomeNote = () => {
     };
     navigate(`/signin`, { state: usrObject });
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("email") != "") {
+      if (localStorage.getItem("user type") == "G") {
+        console.log("logged genaral user");
+        navigate(`/view`, { state: { email: localStorage.getItem("email") } });
+      } else if (localStorage.getItem("user type") == "A") {
+        console.log("logged admin user");
+        navigate(`/viewalluser`);
+      }
+    }
+  }, []);
 
   return (
     <div className="welcome-container">

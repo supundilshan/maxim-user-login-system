@@ -9,7 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const authenticateUser = async (e) => {
+  const authenticateUser = (e) => {
     e.preventDefault();
     const Auth_Object = { email, password };
     let Login_state, login_email, login_user_type;
@@ -30,11 +30,27 @@ const Login = () => {
           login_email == null &&
           login_user_type == null
         ) {
+          document.getElementById("email").style.border = "2px solid red";
+          document.getElementById("password").style.border = "2px solid red";
+
+          alert("Please enter valid email or password"); // Display alert fo invalid login
           console.log("cant logged in");
         } else if (login_user_type == "A") {
-          navigate(`/viewalluser`);
+          document.getElementById("email").style.border = "none";
+          document.getElementById("password").style.border = "none";
+
+          localStorage.setItem("email", login_email); //set user email and user type to local storage
+          localStorage.setItem("user type", login_user_type);
+
+          navigate(`/viewalluser`); // Navigate genaral user to user panel
         } else if (login_user_type == "G") {
-          navigate(`/view`);
+          document.getElementById("email").style.border = "none";
+          document.getElementById("password").style.border = "none";
+
+          localStorage.setItem("email", login_email); //set user email and user type to local storage
+          localStorage.setItem("user type", login_user_type);
+
+          navigate(`/view`, { state: { email: login_email } }); //navigate Admin to admin panel
         } else {
           console.log("Cant logged in:unexpected Error");
         }

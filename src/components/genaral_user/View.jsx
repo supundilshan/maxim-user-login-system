@@ -16,10 +16,8 @@ const View = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  //   const userEmail = location.state.email;
-  const userEmail = "SAN@gmail.com";
-
   useEffect(() => {
+    const userEmail = location.state.email;
     // Get the details of a user
     axios
       .get(`http://localhost:3001/user/${userEmail}`)
@@ -39,7 +37,7 @@ const View = () => {
   }, []);
 
   const updateUserData = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const object = { fname, lname, birthday, age, gender, email, phone };
     axios
       .put(`http://localhost:3001/user/${id}`, object)
@@ -50,15 +48,13 @@ const View = () => {
         console.log(err);
       });
 
-    // reload the current page after update
-    window.location.reload(false);
+    // Navigate user to login
+    navigate(`/login`);
   };
 
   return (
     <div>
-      <h1>
-        {fname} {lname}
-      </h1>
+      <h1>Edit Your Data</h1>
 
       <form onSubmit={updateUserData}>
         <table className="data-table">

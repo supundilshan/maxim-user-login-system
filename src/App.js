@@ -16,11 +16,13 @@ import Signin from './components/genaral_user/Register';
 import DisplayAllsers from './components/admin_user/DisplayAllsers';
 import DisplayUserData from './components/admin_user/DisplayUserData';
 import View from './components/genaral_user/View';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
 
+      <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<WelcomeNote />} />
