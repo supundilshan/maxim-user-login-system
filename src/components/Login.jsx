@@ -1,18 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+import axios from "axios";
+
 const Login = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const authenticateUser = (e) => {
+  const authenticateUser = async (e) => {
     e.preventDefault();
-    const Authenticate_Object = { email, password };
-    console.log(Authenticate_Object);
-
-    navigate(`/viewalluser`);
+    const Auth_Object = { email, password };
+    let Login_state, login_email, login_user_type;
+    axios
+      .post(`http://localhost:3001/authuser`, Auth_Object)
+      .then((res) => {
+        Login_state = res.data.Login_Success;
+        login_email = res.data.email;
+        login_user_type = res.data.userType;
+        console.log(`${Login_state} ${login_email}  ${login_user_type}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .then(() => {
+        if (
+          Login_state == false &&
+          login_email == null &&
+          login_user_type == null
+        ) {
+          console.log("cant logged in");
+        } else if (login_user_type == "A") {
+          navigate(`/viewalluser`);
+        } else if (login_user_type == "G") {
+          navigate(`/view`);
+        } else {
+          console.log("Cant logged in:unexpected Error");
+        }
+      });
   };
 
   return (

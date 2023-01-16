@@ -65,7 +65,7 @@ const View = () => {
           <tbody>
             <tr>
               <td>
-                <label htmlFor="fname"> First Name: </label>{" "}
+                <label htmlFor="fname"> First Name: </label>
               </td>
               <td>
                 <input

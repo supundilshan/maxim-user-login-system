@@ -74,6 +74,7 @@ const Signin = () => {
       document.getElementById("phone").style.border = "2px solid red";
       alert("Please Enter Valid Phone Number");
     } else {
+      document.getElementById("phone").style.border = "none";
       insertUserData();
     }
   };

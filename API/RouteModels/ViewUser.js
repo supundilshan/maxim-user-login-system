@@ -44,17 +44,38 @@ const ReadLoginTable = (req, res) => {
     });
 }
 
-const ReadLoginTableByID = (req, res) => {
+const ReadLoginTableByEmail = (req, res) => {
     const sql = `SELECT * FROM system_login
-                    WHERE id = ${req.params.id}`;
+                    WHERE email = "${req.body.email}" AND password = "${req.body.password}"`;
 
     // Exicute Quary
     Database.DB.query(sql, (err, result) => {
+        let Login_Success;
+        let id, userType;
+
         if (err) {
-            console.log(err);
+            Login_Success = false;
+            console.log("err is====>" + err);
         }
         else {
-            res.send(result);
+            console.log(result[0]);
+
+            if (result[0] == undefined || result[0] == null) {
+                Login_Success = false; //login failed
+                email = null;
+                userType = null;
+            }
+            else {
+                Login_Success = true; //login succeed
+                email = result[0].email;
+                userType = result[0].user_type;
+            }
+
+            const Login_Info = { Login_Success, userType, email }
+
+            // return login information to front
+            console.log(Login_Info);
+            res.send(Login_Info);
         }
     });
 }
@@ -64,7 +85,7 @@ module.exports = {
     ReadUserTableByEmail,
 
     ReadLoginTable,
-    ReadLoginTableByID
+    ReadLoginTableByEmail
 };
 
 
